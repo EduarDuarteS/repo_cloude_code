@@ -1,0 +1,15 @@
+model_list:
+  # Capture any Claude Code attempt
+  - model_name: gemini-3.1-pro
+    litellm_params:
+      # THE KEY: Model optimized for external tool schemas
+      model: gemini/gemini-3.1-pro-preview-customtools
+      api_key: "os.environ/GEMINI_API_KEY"
+      # Hallucination control
+      drop_params: true
+      # Force Gemini to "think" before generating JSON
+      reasoning_effort: high
+
+litellm_settings:
+  drop_params: true
+  set_verbose: false
