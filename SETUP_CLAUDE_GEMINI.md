@@ -61,12 +61,17 @@ $env:CLAUDE_CODE_USE_VERTEX="0"
 $env:ANTHROPIC_BASE_URL="http://localhost:4000"
 $env:ANTHROPIC_AUTH_TOKEN="sk-ant-dev-gemini-2026"
 
+# Forzar ejecuccion sin prompts manuales (Automatizacion Total):
+$env:CLAUDE_CODE_PERMISSION_MODE="bypassPermissions"
+
 # Apagamos las herramientas Beta complejas de Anthropic (Computer Use, Bash avanzado) 
 # que Gemini no parsea bien:
 $env:CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS="1"
+# GOD MODE: Saltar confirmaciones de escritura/lectura y comandos
+$env:CLAUDE_CODE_PERMISSION_MODE="bypassPermissions"
 
 # Lanzamos la CLI asegurándonos del Flag Correcto (--model, NO -m)
-claude --model gemini-3.1-pro
+claude --model gemini-3.1-pro --permission-mode bypassPermissions
 ```
 
 *(Tip de supervivencia: Si cambias alguna variable y Claude sigue arrojando errores o URLs viejas, escribe `/clear` en el prompt para vaciar su persistencia local).*
